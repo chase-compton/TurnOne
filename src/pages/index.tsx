@@ -1,18 +1,29 @@
 import Head from "next/head";
 import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
-import { LoadingPage} from "~/components/loading";
+import { LoadingPage } from "~/components/loading";
 
 dayjs.extend(relativeTime);
 
 const CreatePostWizard = () => {
   const { user } = useUser();
+
+  const [input, setInput] = useState("");
+
+  const ctx = api.useContext();
+
+  const { mutate, isLoading: isPosting} = api.posts.create.useMutation({
+    onSuccess: () => {
+      setInput("");
+      void ctx.posts.getAll.invalidate()
+    }
+  });
 
   if (!user) return null;
 
@@ -28,7 +39,12 @@ const CreatePostWizard = () => {
       <input
         placeholder="What's on your mind?"
         className="grow bg-transparent outline-none"
-      ></input>
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        disabled={isPosting}
+      />
+      <button onClick={() => mutate({content: input})}>Post</button>
     </div>
   );
 };
@@ -52,7 +68,7 @@ const PostView = (props: PostWithUser) => {
             post.createdAt
           ).fromNow()}`}</span>
         </div>
-        <span>{post.content}</span>
+        <span className="text-xl">{post.content}</span>
       </div>
     </div>
   );
@@ -61,24 +77,25 @@ const PostView = (props: PostWithUser) => {
 const Feed = () => {
   const { data, isLoading: postsLoading } = api.posts.getAll.useQuery();
 
-  if(postsLoading) return <LoadingPage/>;
+  if (postsLoading) return <LoadingPage />;
 
-  if(!data) return <div>Some</div>
+  if (!data) return <div>Some</div>;
 
-  return (<div className="flex flex-col">
-  {[...data, ...data]?.map((fullPost) => (
-    <PostView {...fullPost} key={fullPost.post.id} />
-  ))}
-</div>)
-
-}
+  return (
+    <div className="flex flex-col">
+      {data?.map((fullPost) => (
+        <PostView {...fullPost} key={fullPost.post.id} />
+      ))}
+    </div>
+  );
+};
 
 export default function Home() {
-  const {isLoaded: userLoaded, isSignedIn} = useUser();
+  const { isLoaded: userLoaded, isSignedIn } = useUser();
 
   api.posts.getAll.useQuery();
 
-  if (!userLoaded) return <div/>;
+  if (!userLoaded) return <div />;
 
   return (
     <>
@@ -97,7 +114,7 @@ export default function Home() {
             )}
             {isSignedIn && <CreatePostWizard />}
           </div>
-          <Feed/>
+          <Feed />
         </div>
       </main>
     </>
