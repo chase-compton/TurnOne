@@ -1,16 +1,10 @@
 import { api } from "~/utils/api";
-import type { RouterOutputs } from "~/utils/api";
 import React, { useState } from "react";
-import Link from "next/link";
-import { useUser, SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useUser, SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 import { toast } from "react-hot-toast";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import Image from "next/image";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { PageLayout } from "~/components/layout";
-
-dayjs.extend(relativeTime);
+import { PostView } from "~/components/postview";
 
 const CreatePostWizard = () => {
   const { user } = useUser();
@@ -39,12 +33,15 @@ const CreatePostWizard = () => {
 
   return (
     <div className="flex w-full gap-4">
-      <Image
-        src={user.profileImageUrl}
-        alt="Profile Picture"
-        className="h-14 w-14 rounded-full"
-        width={56}
-        height={56}
+      <UserButton
+        appearance={{
+          elements: {
+            userButtonAvatarBox: {
+              width: 56,
+              height: 56,
+            },
+          },
+        }}
       />
       <input
         placeholder="What's on your mind?"
@@ -75,41 +72,17 @@ const CreatePostWizard = () => {
   );
 };
 
-type PostWithUser = RouterOutputs["posts"]["getAll"][number];
-const PostView = (props: PostWithUser) => {
-  const { post, author } = props;
-  return (
-    <div key={post.id} className="flex gap-3 border-b border-slate-400 p-4">
-      <Image
-        src={author.profilePic}
-        className="h-14 w-14 rounded-full"
-        alt={`@${author.username}'s profile picture`}
-        width={56}
-        height={56}
-      />
-      <div className="flex flex-col">
-        <div className="flex gap-1 text-slate-300">
-          <Link href={`/@${author.username}`}>
-            <span>{`@${author.username}`}</span>
-          </Link>
-          <Link href={`/post/${post.id}`}>
-            <span className="font-thin">{` · ${dayjs(
-              post.createdAt
-            ).fromNow()}`}</span>
-          </Link>
-        </div>
-        <span className="text-xl">{post.content}</span>
-      </div>
-    </div>
-  );
-};
-
 const Feed = () => {
   const { data, isLoading: postsLoading } = api.posts.getAll.useQuery();
 
-  if (postsLoading) return <LoadingPage />;
+  if (postsLoading)
+    return (
+      <div className="flex-grow">
+        <LoadingPage />
+      </div>
+    );
 
-  if (!data) return <div>Some</div>;
+  if (!data) return <div>Something went wrong...</div>;
 
   return (
     <div className="flex flex-col">
@@ -138,6 +111,11 @@ export default function Home() {
         {isSignedIn && <CreatePostWizard />}
       </div>
       <Feed />
+      {isSignedIn && (
+        <div className="flex justify-center">
+          <SignOutButton />
+        </div>
+      )}
     </PageLayout>
   );
 }
