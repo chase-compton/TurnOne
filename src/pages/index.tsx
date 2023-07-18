@@ -2,8 +2,6 @@ import { api } from "~/utils/api";
 import React, { useState } from "react";
 import {
   useUser,
-  SignInButton,
-  SignOutButton,
   UserButton,
 } from "@clerk/nextjs";
 import { toast } from "react-hot-toast";
@@ -68,7 +66,7 @@ const CreatePostWizard = () => {
         <button
           type="button"
           onClick={() => mutate({ content: input })}
-          className="mb-2 mr-2 rounded-full bg-red-700 px-5 py-2.5 text-center text-md font-medium text-slate-200 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+          className="text-md mb-2 mr-2 rounded-full bg-red-700 px-5 py-2.5 text-center font-medium text-slate-200 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
         >
           Post
         </button>
@@ -113,9 +111,11 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <div className="flex border-b border-slate-500 p-4">
-        {isSignedIn && <CreatePostWizard />}
-      </div>
+      {isSignedIn && (
+        <div className="flex border-b border-slate-500 p-4">
+          <CreatePostWizard />
+        </div>
+      )}
       <Feed />
       <div className="flex items-center justify-between p-4 text-xl">
         <a href="https://github.com/chase-compton/formula_one_takes">
@@ -132,40 +132,6 @@ export default function Home() {
             <div>Github</div>
           </div>
         </a>
-        <span>
-          <div className="flex items-center justify-center gap-2">
-            {isSignedIn && (
-              <SignOutButton>
-                <button className="flex items-center gap-2">
-                  Sign Out
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    fill="white"
-                  >
-                    <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z" />
-                  </svg>
-                </button>
-              </SignOutButton>
-            )}
-            {!isSignedIn && (
-              <SignInButton>
-                <button className="flex items-center gap-2">
-                  Sign In
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    fill="white"
-                  >
-                    <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z" />
-                  </svg>
-                </button>
-              </SignInButton>
-            )}
-          </div>
-        </span>
       </div>
     </PageLayout>
   );
