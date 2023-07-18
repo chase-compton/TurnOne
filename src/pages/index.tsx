@@ -33,7 +33,7 @@ const CreatePostWizard = () => {
   if (!user) return null;
 
   return (
-    <div className="flex w-full resize-y gap-4">
+    <div className="flex w-full gap-4">
       <div className="avatar">
         <div className="w-16 rounded-full">
           <Image
@@ -47,7 +47,7 @@ const CreatePostWizard = () => {
       </div>
       <input
         placeholder="What's up?"
-        className="input input-ghost w-full"
+        className="input input-bordered w-full"
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
