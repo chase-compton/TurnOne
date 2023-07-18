@@ -14,7 +14,7 @@ export const PostView = (props: PostWithUser) => {
     <div key={post.id} className=" flex gap-4 border-b border-slate-500 p-4">
       <Link href={`/@${author.username}`}>
         <div className="avatar">
-          <div className="w-14 rounded-full ring ring-neutral-content ring-offset-1 ring-offset-base-100">
+        <div className="w-16 rounded-full">
             <Image
               src={author.profileImageUrl}
               className="h-[56px] w-[56px] rounded-full object-fill"

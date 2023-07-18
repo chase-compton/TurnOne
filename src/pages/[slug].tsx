@@ -6,6 +6,7 @@ import Image from "next/image";
 import { LoadingPage } from "~/components/loading";
 import { PostView } from "~/components/postview";
 import { generateSSGHelper } from "~/server/helpers/ssgHelper";
+import Link from "next/link";
 
 const ProfileFeed = (props: { userId: string }) => {
   const { data, isLoading } = api.posts.getPostsByUserId.useQuery({
@@ -33,11 +34,11 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
   return (
     <>
       <Head>
-        <title>{data.username ?? data.externalUsername}</title>
+        <title>TurnOne - @{data.username ?? data.externalUsername}</title>
       </Head>
       <PageLayout>
-        <div className="avatar relative h-36 bg-slate-600">
-          <div className="w-36 ml-4 absolute -mb-[72px] bottom-0 left-0 rounded-full ring ring-neutral-content ring-offset-1 ring-offset-base-100">
+        <div className="avatar relative h-36">
+          <div className="absolute bottom-0 left-0 -mb-[72px] ml-4 w-36 rounded-full">
             <Image
               src={data.profileImageUrl}
               className="h-[56px] w-[56px] object-fill"
@@ -48,9 +49,9 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
           </div>
         </div>
         <div className="h-[64px]"></div>
-        <div className="p-4 text-2xl font-bold">{`@${
-          data.username ?? data.externalUsername ?? "unknown"
-        }`}</div>
+          <div className="p-4 pt-10 text-2xl font-bold">{`@${
+            data.username ?? data.externalUsername ?? "unknown"
+          }`}</div>
         <div className="w-full border-b border-slate-500" />
         <ProfileFeed userId={data.id} />
       </PageLayout>

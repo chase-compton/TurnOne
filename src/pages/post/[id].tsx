@@ -14,10 +14,11 @@ const SinglePostPage: NextPage<{ id: string }> = ({ id }) => {
   return (
     <>
       <Head>
-        <title>{`${data.post.content} - @${data.author.username}`}</title>
+        <title>TurnOne - {`${data.post.content} - @${data.author.username}`}</title>
       </Head>
       <PageLayout>
-        <PostView {...data} />
+        <PostView {...data}/>
+        <div className="h-full border-b border-slate-500"></div>
       </PageLayout>
     </>
   );
