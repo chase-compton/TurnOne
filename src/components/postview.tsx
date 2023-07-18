@@ -11,17 +11,17 @@ type PostWithUser = RouterOutputs["posts"]["getAll"][number];
 export const PostView = (props: PostWithUser) => {
   const { post, author } = props;
   return (
-    <div key={post.id} className="flex gap-4 border-b border-slate-500 p-4">
+    <div key={post.id} className=" flex gap-4 border-b border-slate-500 p-4">
       <Link href={`/@${author.username}`}>
         <Image
           src={author.profileImageUrl}
-          className="h-14 w-14 rounded-full"
+          className="object-fill h-[56px] w-[56px] rounded-full"
           alt={`@${author.username}'s profile picture`}
           width={56}
           height={56}
         />
       </Link>
-      <div className="flex flex-col">
+      <div className="flex-1 flex-col">
         <div className="flex gap-1 text-slate-300">
           <Link href={`/@${author.username}`}>
             <span>{`@${author.username} `}</span>
