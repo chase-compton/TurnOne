@@ -90,7 +90,7 @@ const AboutCard = () => {
 
 const HomeBtn = () => {
   return (
-    <div className="card items-center rounded-t-none bg-base-300 text-center">
+    <div className="card items-center rounded-t-none border-t border-slate-400 bg-base-300 text-center">
       <Link
         href="/"
         className="btn m-2 bg-base-100 text-accent-content hover:bg-base-200"
