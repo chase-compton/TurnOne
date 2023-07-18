@@ -9,7 +9,7 @@ const WelcomeCard = () => {
     <div className="card m-6 h-max max-w-lg flex-1 bg-base-300 text-accent-content shadow-xl">
       <figure className="px-10 pt-10">
         <Image
-          src="/../public/racing-car.png"
+          src="/racing-car.png"
           alt="logo"
           className="rounded-xl"
           width={100}
@@ -50,7 +50,7 @@ const AboutCard = () => {
     <div className="card m-6 h-max max-w-lg flex-1 bg-base-300 text-accent-content shadow-xl">
       <figure className="px-10 pt-10">
         <Image
-          src="/../public/racing.png"
+          src="/racing.png"
           alt="logo"
           className="rounded-xl"
           width={100}
