@@ -1,6 +1,6 @@
 import { api } from "~/utils/api";
 import React, { useState } from "react";
-import { useUser, UserButton } from "@clerk/nextjs";
+import { useUser} from "@clerk/nextjs";
 import { toast } from "react-hot-toast";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { PageLayout } from "~/components/layout";
