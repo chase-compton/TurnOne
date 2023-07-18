@@ -1,13 +1,11 @@
 import { api } from "~/utils/api";
 import React, { useState } from "react";
-import {
-  useUser,
-  UserButton,
-} from "@clerk/nextjs";
+import { useUser, UserButton } from "@clerk/nextjs";
 import { toast } from "react-hot-toast";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
+import Image from "next/image";
 
 const CreatePostWizard = () => {
   const { user } = useUser();
@@ -35,20 +33,21 @@ const CreatePostWizard = () => {
   if (!user) return null;
 
   return (
-    <div className="flex w-full gap-4">
-      <UserButton
-        appearance={{
-          elements: {
-            userButtonAvatarBox: {
-              width: 56,
-              height: 56,
-            },
-          },
-        }}
-      />
+    <div className="flex w-full resize-y gap-4">
+      <div className="avatar">
+        <div className="w-14 rounded-full ring ring-neutral-content ring-offset-1 ring-offset-base-100">
+          <Image
+            src={user.profileImageUrl}
+            className="h-[56px] w-[56px] rounded-full object-fill"
+            alt={`@${user.username ?? "user"}'s profile picture`}
+            width={56}
+            height={56}
+          />
+        </div>
+      </div>
       <input
-        placeholder="What's on your mind?"
-        className="grow bg-transparent outline-none placeholder:italic placeholder:text-slate-500"
+        placeholder="What's up?"
+        className="input input-ghost w-full"
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}

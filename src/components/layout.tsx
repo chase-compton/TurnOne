@@ -6,7 +6,7 @@ const WelcomeCard = () => {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="card m-6 h-96 w-96 flex-1 bg-base-300 text-accent-content shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-base-300 text-accent-content shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/../public/racing-car.png"
@@ -18,7 +18,10 @@ const WelcomeCard = () => {
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">Welcome to TurnOne!</h2>
-        <p>A place to post Formula 1 related opinions and takes.</p>
+        <p>
+          A place to post Formula 1 related opinions and takes. Read what others
+          have to say and post your own takes, no matter how controversial.
+        </p>
         {!isSignedIn && (
           <div className="card-actions">
             <SignInButton>
@@ -44,7 +47,7 @@ const WelcomeCard = () => {
 
 const AboutCard = () => {
   return (
-    <div className="card m-6 h-96 w-96 flex-1 bg-base-300 text-accent-content shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-base-300 text-accent-content shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/../public/racing.png"
@@ -57,9 +60,8 @@ const AboutCard = () => {
       <div className="card-body items-center text-center">
         <h2 className="card-title">About TurnOne</h2>
         <p>
-          TurnOne was created as a learning exercise and new features will be
-          added slowly. In the meantime enjoy reading the feed and be respectful
-          with each post.
+          TurnOne was created as a learning exercise/personal project. That being said, there will be general maintenance and new features will be
+          added slowly. In the meantime enjoy reading the feed and please be respectful when posting.
         </p>
       </div>
     </div>
