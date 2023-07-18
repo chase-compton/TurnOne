@@ -11,7 +11,7 @@ type PostWithUser = RouterOutputs["posts"]["getAll"][number];
 export const PostView = (props: PostWithUser) => {
   const { post, author } = props;
   return (
-    <div key={post.id} className="flex gap-3 border-b border-slate-400 p-4">
+    <div key={post.id} className="flex gap-4 border-b border-slate-500 p-4">
       <Link href={`/@${author.username}`}>
         <Image
           src={author.profileImageUrl}
@@ -32,7 +32,11 @@ export const PostView = (props: PostWithUser) => {
             ).fromNow()}`}</span>
           </Link>
         </div>
-        <Link href={`/post/${post.id}`}><span className="text-2xl">{post.content}</span></Link>
+        <div className="">
+          <Link href={`/post/${post.id}`}>
+            <span className="text-xl text-slate-200">{post.content}</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
