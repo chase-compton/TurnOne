@@ -33,7 +33,7 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
   return (
     <>
       <Head>
-        <title>TurnOne - @{data.username ?? data.externalUsername}</title>
+        <title>TurnOne - @{data.username}</title>
       </Head>
       <PageLayout>
         <div className="avatar relative h-36">
@@ -49,7 +49,7 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
         </div>
         <div className="h-[64px]"></div>
           <div className="p-4 pt-10 text-2xl font-bold">{`@${
-            data.username ?? data.externalUsername ?? "unknown"
+            data.username ?? "unknown"
           }`}</div>
         <div className="w-full border-b border-slate-500" />
         <ProfileFeed userId={data.id} />
