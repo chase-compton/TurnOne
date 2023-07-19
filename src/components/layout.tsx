@@ -7,7 +7,7 @@ const WelcomeCard = () => {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-base-300 text-accent-content shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-[#1e293b] text-[#e2e8f0] shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing-car.png"
@@ -26,7 +26,7 @@ const WelcomeCard = () => {
         {!isSignedIn && (
           <div className="card-actions">
             <SignInButton>
-              <button className="btn bg-red-600 text-accent-content hover:bg-red-800">
+              <button className="btn bg-red-600 text-[#e2e8f0] hover:bg-red-800">
                 Sign In
               </button>
             </SignInButton>
@@ -35,7 +35,7 @@ const WelcomeCard = () => {
         {isSignedIn && (
           <div className="card-actions">
             <SignOutButton>
-              <button className="btn m-2 bg-red-600 text-accent-content hover:bg-red-800">
+              <button className="btn m-2 bg-red-600 text-[#e2e8f0] hover:bg-red-800">
                 Sign Out
               </button>
             </SignOutButton>
@@ -48,7 +48,7 @@ const WelcomeCard = () => {
 
 const AboutCard = () => {
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-base-300 text-accent-content shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-[#1e293b] text-[#e2e8f0] shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing.png"
@@ -70,7 +70,7 @@ const AboutCard = () => {
           <a
             href="https://github.com/chase-compton/TurnOne"
             target="_blank"
-            className="btn m-2 bg-neutral text-accent-content hover:bg-base-100"
+            className="btn m-2 bg-[#334155] text-[#e2e8f0] hover:bg-base-100"
           >
             Github
             <svg

@@ -65,7 +65,7 @@ const CreatePostWizard = () => {
         <button
           type="button"
           onClick={() => mutate({ content: input })}
-          className="btn bg-red-600 text-accent-content hover:bg-red-800"
+          className="btn bg-red-600 text-slate-300 hover:bg-red-800"
         >
           Post
         </button>
@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <PageLayout>
       {isSignedIn && (
-        <div className="card rounded-b-none flex bg-base-100 p-4">
+        <div className="card rounded-b-none flex bg-[#1e293b] p-4">
           <CreatePostWizard />
         </div>
       )}
