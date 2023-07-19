@@ -26,7 +26,7 @@ export const PostView = (props: PostWithUser) => {
             </div>
           </div>
         </Link>
-        <div className="gap-1 text-slate-300">
+        <div className="text-slate-300">
           <Link href={`/@${author.username}`}>
             <span>{`@${author.username} `}</span>
           </Link>
@@ -37,7 +37,7 @@ export const PostView = (props: PostWithUser) => {
           </Link>
         </div>
       </div>
-      <div className="ml-20 -mt-10">
+      <div className="ml-20 -mt-5">
         <Link href={`/post/${post.id}`}>
           <span className="break-words text-xl text-slate-200">
             {post.content}
