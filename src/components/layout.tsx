@@ -7,7 +7,7 @@ const WelcomeCard = () => {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-[#111827] text-[#e2e8f0] shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-gray-800 text-slate-200 shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing-car.png"
@@ -26,7 +26,7 @@ const WelcomeCard = () => {
         {!isSignedIn && (
           <div className="card-actions">
             <SignInButton>
-              <button className="btn bg-red-600 text-[#e2e8f0] hover:bg-red-800">
+              <button className="btn bg-red-700 text-slate-200 hover:bg-red-800">
                 Sign In
               </button>
             </SignInButton>
@@ -35,7 +35,7 @@ const WelcomeCard = () => {
         {isSignedIn && (
           <div className="card-actions">
             <SignOutButton>
-              <button className="btn m-2 bg-red-600 text-[#e2e8f0] hover:bg-red-800">
+              <button className="btn m-2 bg-red-700 text-slate-200 hover:bg-red-800">
                 Sign Out
               </button>
             </SignOutButton>
@@ -48,7 +48,7 @@ const WelcomeCard = () => {
 
 const AboutCard = () => {
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-[#111827] text-[#e2e8f0] shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-gray-800 text-slate-200 shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing.png"
@@ -70,7 +70,7 @@ const AboutCard = () => {
           <a
             href="https://github.com/chase-compton/TurnOne"
             target="_blank"
-            className="btn m-2 bg-[#111827] text-[#e2e8f0] hover:bg-[#111827]"
+            className="btn m-2 bg-gray-600 text-slate-200 hover:bg-gray-700"
           >
             Github
             <svg
@@ -90,10 +90,10 @@ const AboutCard = () => {
 
 const HomeBtn = () => {
   return (
-    <div className="card items-center rounded-t-none border-t border-slate-400 bg-gray-900 text-center">
+    <div className="card items-center rounded-t-none border-t border-slate-400 bg-gray-800 text-center">
       <Link
         href="/"
-        className="btn m-2 bg-[#111827] text-accent-content hover:bg-gray-900"
+        className="btn m-2 bg-gray-600 text-slate-200 hover:bg-gray-700"
       >
         Home
         <svg
@@ -113,7 +113,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <main className="overflow-none flex h-screen justify-center overflow-hidden">
       <WelcomeCard />
-      <div className="card my-6 flex h-full w-full flex-col bg-[#030712] pb-6 md:max-w-2xl">
+      <div className="card my-6 flex h-full w-full flex-col bg-gray-900 pb-6 md:max-w-2xl">
         {props.children}
         <HomeBtn />
       </div>

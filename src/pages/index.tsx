@@ -65,7 +65,7 @@ const CreatePostWizard = () => {
         <button
           type="button"
           onClick={() => mutate({ content: input })}
-          className="btn bg-red-600 text-slate-300 hover:bg-red-800"
+          className="btn bg-red-600 text-slate-200 hover:bg-red-800"
         >
           Post
         </button>
@@ -90,10 +90,10 @@ const Feed = () => {
       </div>
     );
 
-  if (!data) return <div>Something went wrong...</div>;
+  if (!data) return <div className="flex-grow flex-col border-b border-slate-400">Something went wrong...</div>;
 
   return (
-    <div className="flex-grow flex-col overflow-y-auto border-b border-slate-500">
+    <div className="flex-grow flex-col overflow-y-auto border-b border-slate-400">
       {data?.map((fullPost) => (
         <PostView {...fullPost} key={fullPost.post.id} />
       ))}
@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <PageLayout>
       {isSignedIn && (
-        <div className="card rounded-b-none flex bg-[#1e293b] p-4">
+        <div className="card rounded-b-none flex bg-gray-800 p-4">
           <CreatePostWizard />
         </div>
       )}
