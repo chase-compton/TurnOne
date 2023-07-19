@@ -113,7 +113,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <main className="flex flex-col xl:flex-row xl:h-screen justify-center items-center xl:items-start overflow-hidden overscroll-none">
       <WelcomeCard />
-      <div className="card xl:min-w-[768px] max-w-full max-h-[760px] xl:max-h-screen xl:max-w-3xl bg-gray-900">
+      <div className="card mx-6 xl:min-w-[768px] max-w-full h-[760px] xl:h-screen xl:max-w-3xl bg-gray-900">
         {props.children}
         <HomeBtn />
       </div>
