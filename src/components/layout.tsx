@@ -7,7 +7,7 @@ const WelcomeCard = () => {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-gray-800 text-slate-200 shadow-xl">
+    <div className="card m-6 h-min w-full max-w-lg bg-gray-800 text-slate-200 shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing-car.png"
@@ -48,7 +48,7 @@ const WelcomeCard = () => {
 
 const AboutCard = () => {
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-gray-800 text-slate-200 shadow-xl">
+    <div className="card m-6 h-min w-full max-w-lg bg-gray-800 text-slate-200 shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing.png"
@@ -111,9 +111,9 @@ const HomeBtn = () => {
 
 export const PageLayout = (props: PropsWithChildren) => {
   return (
-    <main className="overflow-none flex h-screen justify-center overflow-hidden">
+    <main className="flex flex-col xl:flex-row xl:h-screen justify-center items-center xl:items-start overflow-hidden overscroll-none">
       <WelcomeCard />
-      <div className="card my-6 flex h-full w-full flex-col bg-gray-900 pb-6 md:max-w-2xl">
+      <div className="card xl:min-w-[768px] max-w-full max-h-[760px] xl:max-h-screen xl:max-w-3xl bg-gray-900">
         {props.children}
         <HomeBtn />
       </div>

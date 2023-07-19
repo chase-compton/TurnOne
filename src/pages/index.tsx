@@ -85,7 +85,7 @@ const Feed = () => {
 
   if (postsLoading)
     return (
-      <div className="flex-grow align-middle">
+      <div className="flex align-middle">
         <LoadingPage />
       </div>
     );
@@ -93,7 +93,7 @@ const Feed = () => {
   if (!data) return <div className="flex-grow flex-col border-b border-slate-400">Something went wrong...</div>;
 
   return (
-    <div className="flex-grow flex-col overflow-y-auto border-b border-slate-400">
+    <div className="flex-grow flex-col overflow-x-hidden overflow-y-auto border-b border-slate-400">
       {data?.map((fullPost) => (
         <PostView {...fullPost} key={fullPost.post.id} />
       ))}
@@ -111,7 +111,7 @@ export default function Home() {
   return (
     <PageLayout>
       {isSignedIn && (
-        <div className="card rounded-b-none flex bg-gray-800 p-4">
+        <div className="card rounded-b-none bg-gray-800 p-4">
           <CreatePostWizard />
         </div>
       )}
