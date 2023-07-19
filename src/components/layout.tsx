@@ -7,7 +7,7 @@ const WelcomeCard = () => {
   const { isSignedIn } = useUser();
 
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-[#1e293b] text-[#e2e8f0] shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-[#111827] text-[#e2e8f0] shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing-car.png"
@@ -48,7 +48,7 @@ const WelcomeCard = () => {
 
 const AboutCard = () => {
   return (
-    <div className="card m-6 h-max max-w-lg flex-1 bg-[#1e293b] text-[#e2e8f0] shadow-xl">
+    <div className="card m-6 h-max max-w-lg flex-1 bg-[#111827] text-[#e2e8f0] shadow-xl">
       <figure className="px-10 pt-10">
         <Image
           src="/racing.png"
@@ -70,7 +70,7 @@ const AboutCard = () => {
           <a
             href="https://github.com/chase-compton/TurnOne"
             target="_blank"
-            className="btn m-2 bg-[#334155] text-[#e2e8f0] hover:bg-base-100"
+            className="btn m-2 bg-[#111827] text-[#e2e8f0] hover:bg-[#111827]"
           >
             Github
             <svg
@@ -90,10 +90,10 @@ const AboutCard = () => {
 
 const HomeBtn = () => {
   return (
-    <div className="card items-center rounded-t-none border-t border-slate-400 bg-base-300 text-center">
+    <div className="card items-center rounded-t-none border-t border-slate-400 bg-gray-900 text-center">
       <Link
         href="/"
-        className="btn m-2 bg-base-100 text-accent-content hover:bg-base-200"
+        className="btn m-2 bg-[#111827] text-accent-content hover:bg-gray-900"
       >
         Home
         <svg
@@ -113,7 +113,7 @@ export const PageLayout = (props: PropsWithChildren) => {
   return (
     <main className="overflow-none flex h-screen justify-center overflow-hidden">
       <WelcomeCard />
-      <div className="card my-6 flex h-full w-full flex-col bg-base-300 pb-6 md:max-w-2xl">
+      <div className="card my-6 flex h-full w-full flex-col bg-[#030712] pb-6 md:max-w-2xl">
         {props.children}
         <HomeBtn />
       </div>
