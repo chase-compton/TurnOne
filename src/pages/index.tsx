@@ -73,7 +73,7 @@ const CreatePostWizard = () => {
 
       {isPosting && (
         <div className="flex items-center justify-center">
-          <LoadingSpinner size={30} />
+          <LoadingSpinner/>
         </div>
       )}
     </div>
@@ -85,7 +85,7 @@ const Feed = () => {
 
   if (postsLoading)
     return (
-      <div className="flex align-middle">
+      <div className="flex-grow flex-col">
         <LoadingPage />
       </div>
     );
