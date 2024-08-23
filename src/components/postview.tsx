@@ -19,7 +19,7 @@ export const PostView = (props: PostWithUser) => {
               <Image
                 src={author.profileImageUrl}
                 className="h-[56px] w-[56px] rounded-full object-fill"
-                alt={`@${author.username}'s profile picture`}
+                alt={`@${author.username}'s profile image`}
                 width={56}
                 height={56}
               />
