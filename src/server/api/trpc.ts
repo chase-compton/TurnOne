@@ -11,7 +11,7 @@ import { TRPCError, initTRPC } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
-import { prisma } from "~/server/db";
+import db from "~/server/db";  // Import the PostgreSQL connection
 
 /**
  * 1. CONTEXT
@@ -34,7 +34,7 @@ export const createTRPCContext = (opts: CreateNextContextOptions) => {
   const userId = sesh.userId;
 
   return {
-    prisma,
+    db,  
     userId,
   };
 };

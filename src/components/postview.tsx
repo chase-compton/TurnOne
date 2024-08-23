@@ -32,7 +32,7 @@ export const PostView = (props: PostWithUser) => {
           </Link>
           <Link href={`/post/${post.id}`}>
             <span className="font-thin">{` · ${dayjs(
-              post.createdAt
+              post.created_at
             ).fromNow()}`}</span>
           </Link>
         </div>
